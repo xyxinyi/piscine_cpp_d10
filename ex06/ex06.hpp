@@ -1,5 +1,5 @@
-#ifndef EX6CPP15
-#define EX6CPP15
+#ifndef EX06_HPP_
+#define EX06_HPP_
 
 #include <string>
 #include <sstream>

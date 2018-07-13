@@ -1,14 +1,4 @@
-/*
-** ex04.cpp for cpp_d15 in /home/rubysh/Work/Repositories/Epitech/SecondYear/Pool/cpp_d15/ex04/ex04.cpp
-**
-** Made by Anas Buyumad
-** Login   <anas.buyumad@epitech.eu>
-**
-** Started on  Wed Jan 18 14:10:58 2017 Anas Buyumad
-** Last update Wed Jan 18 14:11:00 2017 Anas Buyumad
-*/
-
-#include	"ex04.hpp"
+#include "ex04.hpp"
 template<typename T>bool equal(const T&a,const T&b){return a==b;};
 
 template bool equal<int>(const int &a, const int &b);
