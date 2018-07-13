@@ -1,53 +1,68 @@
 /*
-** EPITECH PROJECT, 2018
-** CPP Pool Day 15
-** File description:
-** ex02
+** ex02.hpp for cpp_d15 in /home/rubysh/Work/Repositories/Epitech/SecondYear/Pool/cpp_d15/ex02/ex02.hpp
+**
+** Made by Anas Buyumad
+** Login   <anas.buyumad@epitech.eu>
+**
+** Started on  Wed Jan 18 10:42:43 2017 Anas Buyumad
+** Last update Wed Jan 18 10:42:43 2017 Anas Buyumad
 */
 
-#if !defined (EX02_HPP_)
-	#define EX02_HPP_
+#ifndef CPP_D15_EX02_HPP
+#define CPP_D15_EX02_HPP
 
-	#include <climits>
-	#include <iostream>
-	#include <stdexcept>
+#include <iostream>
 
 template <typename T>
-T min(T a, T b)
+T	min(const T &a, const T &b)
 {
-	std::cout << "template min" << std::endl;
-	return a <= b ? a : b;
+  std::cout << "template min" << std::endl;
+  if (a <= b) {
+    return a;
+  }
+  return b;
 }
 
-int min(int a, int b)
+int	min(const int &a, const int &b)
 {
-	std::cout << "non-template min" << std::endl;
-	return a <= b ? a : b;
+  std::cout << "non-template min" << std::endl;
+  if (a <= b) {
+    return a;
+  }
+  return b;
 }
 
 template <typename T>
-T templateMin(T const *array, size_t size)
-{
-	if (!array)
-		throw std::runtime_error("Null pointer.");
-	if (size == 0)
-		throw std::logic_error("Array must not be empty.");
-	T res = array[0];
-	for (size_t i = 1; i < size; i++)
-		res = min<T>(array[i], res);
-	return res;
+T	templateMin(const T *array, int size) {
+  T smallest;
+
+  if (!size) {
+    return 0;
+  }
+  smallest = array[0];
+  if (size == 1) {
+    return smallest;
+  }
+  for (int iterator = 1; iterator < size; iterator++) {
+    smallest = min<T>(smallest, array[iterator]);
+  }
+  return smallest;
 }
 
-int nonTemplateMin(int const *array, size_t size)
-{
-	if (!array)
-		throw std::runtime_error("Null pointer.");
-	if (size == 0)
-		throw std::logic_error("Array must not be empty.");
-	int res = array[0];
-	for (size_t i = 1; i < size; i++)
-		res = min(array[i], res);
-	return res;
+int	nonTemplateMin(const int *array, int size) {
+  int smallest;
+
+  if (!size) {
+    return 0;
+  }
+  smallest = array[0];
+  if (size == 1) {
+    return smallest;
+  }
+  for (int iterator = 1; iterator < size; iterator++) {
+    smallest = min(smallest, array[iterator]);
+  }
+  return smallest;
 }
 
-#endif /* !defined (EX02_HPP_) */
+#endif //CPP_D15_EX02_HPP

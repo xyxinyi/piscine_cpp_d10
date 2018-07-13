@@ -1,62 +1,57 @@
-/*
-** EPITECH PROJECT, 2018
-** CPP Pool Day 15
-** File description:
-** ex06
-*/
+#ifndef EX6CPP15
+#define EX6CPP15
 
-#if !defined (EX06_HPP_)
-	#define EX06_HPP_
-
-	#include <sstream>
-	#include <string>
-	#include <typeinfo>
+#include <string>
+#include <sstream>
 
 template <typename T>
-static std::string toString(T const &value __attribute__((unused)))
+std::string	getType(T value)
 {
-	std::ostringstream oss;
-	oss << "[???]";
-	return oss.str();
-}
+	std::stringstream output;
 
-static std::string toString(int const &value) __attribute__((unused));
-static std::string toString(float const &value) __attribute__((unused));
-static std::string toString(std::string const &value) __attribute__((unused));
-
-static std::string toString(int const &value)
-{
-	std::ostringstream oss;
-	oss << "[int:" << value << "]";
-	return oss.str();
-}
-
-static std::string toString(float const &value)
-{
-	std::ostringstream oss;
-	oss << "[float:" << value << "f]";
-	return oss.str();
-}
-
-static std::string toString(std::string const &value)
-{
-	std::ostringstream oss;
-	oss << "[string:\"" << value << "\"]";
-	return oss.str();
-}
-
-template <typename T, typename U = T>
-struct Tuple {
-	T a;
-	U b;
-
-	std::string toString() const
-	{
-		std::ostringstream oss;
-		oss << "[TUPLE " << ::toString(a) <<
-			" " << ::toString(b) << "]";
-		return oss.str();
-	}
+	(void) value;
+	output << "[???]";
+	return output.str();
 };
 
-#endif /* !defined (EX06_HPP_) */
+template<> std::string getType(int value)
+{
+	std::stringstream	output;
+
+	output << "[int:" << value << "]";
+	return output.str();
+};
+
+template<> std::string getType(float value)
+{
+	std::stringstream	output;
+
+	output << "[float:" << value << "f]";
+	return output.str();
+};
+
+template<> std::string getType(std::string value)
+{
+	std::stringstream	output;
+
+	output << "[string:\"" << value.c_str() << "\"]";
+	return output.str();
+};
+
+template <typename T, typename U = T>
+struct Tuple
+{
+public:
+	T a;
+	U b;
+	std::string	toString() const {
+		std::stringstream output;
+		std::string stringA = getType<T>(a);
+		std::string	stringB = getType<U>(b);
+
+		output << "[TUPLE " << stringA.c_str() << " " << stringB.c_str() << "]";
+		return output.str();
+	};
+};
+
+#endif

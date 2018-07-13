@@ -1,29 +1,30 @@
 /*
-** EPITECH PROJECT, 2018
-** CPP Pool Day 15
-** File description:
-** ex03
+** ex03.hpp for cpp_d15 in /home/rubysh/Work/Repositories/Epitech/SecondYear/Pool/cpp_d15/ex03/ex03.hpp
+**
+** Made by Anas Buyumad
+** Login   <anas.buyumad@epitech.eu>
+**
+** Started on  Wed Jan 18 13:56:33 2017 Anas Buyumad
+** Last update Wed Jan 18 13:56:33 2017 Anas Buyumad
 */
 
-#if !defined (EX03_HPP_)
-	#define EX03_HPP_
+#ifndef CPP_D15_EX03_HPP
+#define CPP_D15_EX03_HPP
 
-	#include <iostream>
-	#include <stdexcept>
+#include <iostream>
 
 template <typename T>
-void foreach(T const *array, void (&func)(const T &elem), size_t size)
+void	print(const T & variable)
 {
-	if (!array)
-		throw std::runtime_error("Null pointer.");
-	for (size_t i = 0; i < size; i++)
-		func(array[i]);
+  std::cout << variable << std::endl;
 }
 
 template <typename T>
-void print(const T &elem)
+void	foreach(const T *array, void (*func)(const T& elem), const int &size)
 {
-	std::cout << elem << std::endl;
+  for (int iterator = 0 ; iterator < size ; iterator++) {
+    func(array[iterator]);
+  }
 }
 
-#endif /* !defined (EX03_HPP_) */
+#endif //CPP_D15_EX03_HPP
